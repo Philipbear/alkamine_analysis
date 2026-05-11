@@ -228,7 +228,8 @@ def create_scatter_plot():
                                 title_fontsize=6.5,
                                 columnspacing=1.5,
                                 handletextpad=0.8)
-    
+    size_legend._legend_box.sep = 6
+
     # Add back the class legend (since creating size_legend removes it)
     ax_main.add_artist(class_legend)
     

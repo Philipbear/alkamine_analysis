@@ -100,7 +100,7 @@ def sort_molecules(pivot_df):
     return pivot_df
 
 
-def create_heatmap(pivot_df, figsize=(4.45, 1.8)):
+def create_heatmap(pivot_df, figsize=(4.45, 1.9)):
     """
     Create and save the heatmap
     """
@@ -149,7 +149,7 @@ def create_heatmap(pivot_df, figsize=(4.45, 1.8)):
             
             'valine_cholestan-3-one',
             'leucine_cholestan-3-one',
-            'phenylalanine_cholestan-3-one',
+            # 'phenylalanine_cholestan-3-one',
             'tyramine_cholestan-3-one',
             'n-acetylcadaverine_cholestan-3-one',
             'n-acetylputrescine_cholestan-3-one',

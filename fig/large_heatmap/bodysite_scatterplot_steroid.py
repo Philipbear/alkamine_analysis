@@ -154,8 +154,8 @@ def create_scatter_plot(grouped_amine, grouped_steroid):
     bodysite_totals = bodysite_totals.reindex(unique_body_sites, fill_value=0)
     
     # Create figure with gridspec for marginal bar plots
-    fig = plt.figure(figsize=(4.9, 1.6))
-    gs = gridspec.GridSpec(2, 2, figure=fig, width_ratios=[16, 1], height_ratios=[1, 5],
+    fig = plt.figure(figsize=(4.9, 1.8))
+    gs = gridspec.GridSpec(2, 2, figure=fig, width_ratios=[16, 1], height_ratios=[2, 9],
                           hspace=0.025, wspace=0.025)
     
     # Main scatter plot (bottom left)

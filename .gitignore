@@ -213,3 +213,13 @@ _*
 *.svg
 *.pptx
 .DS_Store
+
+# Input data tables needed to run the scripts (see README "Data")
+!T_cell/data/*.csv
+!culture_data/data/Peak Area extraction_bacteria culture.csv
+!immune_data/data/Test_immune_cells_nonspecific.tsv
+!immune_data/data/Test_immune_cells_nonspecific_Isomer_LCA_Nacetylcadaverine_DMSO.csv
+!fig/large_heatmap/data/steroid_alkamines.csv
+!fig/large_heatmap/normalized/data/human_bodysite_file_count.tsv
+!fig/large_heatmap/normalized/data/rodent_bodysite_file_count.tsv
+!fig/structure_upset/structure_overlap.tsv

@@ -37,6 +37,15 @@ def preprocess_data():
     # remove metformin matches
     df = df[~df['Part1'].str.contains('Metformin', case=False)].reset_index(drop=True)
     
+    # correct for 3-methoxytyramine
+    df.loc[df['Part1'] == '3-Methoxytyramine', 'Part1class'] = 'Biogenic amines'
+    
+    # correct for 2,6-dimethyl-5-heptenal
+    df.loc[df['Part2'] == '2,6-Dimethyl-5-heptenal', 'Part2class'] = 'ketone'
+
+    # correct for 3-methyl-2-pentanone (has a few stray aldehyde rows; it is a ketone)
+    df.loc[df['Part2'] == '3-Methyl-2-pentanone', 'Part2class'] = 'ketone'
+
     print(f"Loaded {len(df)} unique matches")
     
     # print nunique names

@@ -110,11 +110,12 @@ def plot_single(comp, output_path):
     ax.scatter(log_x, y, s=10, color=color, alpha=0.55,
                edgecolors='white', linewidths=0.3, zorder=3)
 
-    # Mean + std error bars.
-    ax.errorbar(log_unique, means, yerr=stds, fmt='o',
+    # Mean + std error bars (mean shown as a short horizontal line to avoid
+    # being confused with the replicate scatter dots).
+    ax.errorbar(log_unique, means, yerr=stds, fmt='_',
                 color=color, ecolor=color, elinewidth=0.5, capsize=1.5,
-                capthick=0.5, markersize=3.2, markeredgecolor='white',
-                markeredgewidth=0.3, zorder=4, label='Mean ± SD')
+                capthick=0.5, markersize=6, markeredgewidth=0.9,
+                zorder=4, label='Mean ± SD')
 
     # Fitted curve — clipped to the measured concentration range (no extrapolation).
     if popt is not None:

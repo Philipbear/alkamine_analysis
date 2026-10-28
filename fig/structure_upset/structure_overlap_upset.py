@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.collections import LineCollection
 from upsetplot import UpSet, from_indicators
 import numpy as np
 import os
@@ -78,12 +79,16 @@ def create_upset_plot(upset_data, binary_df, figsize=(2.9, 1.8), min_subset_size
         sort_categories_by='-cardinality',  # Sort categories by total count
         element_size=10,               # Size of dots in matrix
         facecolor='0.4',               # Dot color
-        connecting_line_width=1,     # Width of lines connecting dots
     )
-    
+
     # Generate the plot - this returns a dict of axes, not a figure
     axes_dict = upset.plot()
-    
+
+    # Width of lines connecting dots (upsetplot draws them with lw=2)
+    for coll in axes_dict['matrix'].collections:
+        if isinstance(coll, LineCollection):
+            coll.set_linewidth(1)
+
     # Get the figure from one of the axes
     fig = list(axes_dict.values())[0].figure
     
@@ -227,9 +232,6 @@ def main():
     """
     Main function to run the complete analysis
     """
-    # Create output directory
-    os.makedirs('library_analysis/structure_overlap/plots', exist_ok=True)
-    
     # Load data
     df = load_data()
     
@@ -242,7 +244,7 @@ def main():
     # Create UpSet plot
     fig = create_upset_plot(upset_data, binary_df)
     
-    print('\nAnalysis complete! All plots saved to library_analysis/structure_overlap/plots/')
+    print('\nAnalysis complete! Plot saved to fig/structure_upset/')
     
     return df, binary_df, upset_data
 

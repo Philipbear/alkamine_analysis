@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.collections import LineCollection
 from upsetplot import UpSet, from_indicators
 import numpy as np
 import os
@@ -102,12 +103,16 @@ def create_upset_plot(upset_data, binary_df, figsize=(4.8, 1.8), min_subset_size
         sort_categories_by='-cardinality',  # Sort categories by total count
         element_size=10,               # Size of dots in matrix
         facecolor='0.4',               # Dot color
-        connecting_line_width=1,     # Width of lines connecting dots
     )
-    
+
     # Generate the plot - this returns a dict of axes, not a figure
     axes_dict = upset.plot()
-    
+
+    # Width of lines connecting dots (upsetplot draws them with lw=2)
+    for coll in axes_dict['matrix'].collections:
+        if isinstance(coll, LineCollection):
+            coll.set_linewidth(1)
+
     # Get the figure from one of the axes
     fig = list(axes_dict.values())[0].figure
     

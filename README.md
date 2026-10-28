@@ -35,41 +35,6 @@ The MASST tables list matches between the alkamine reference MS/MS spectra and p
 
 The files-per-body-site tables were made with `fig/large_heatmap/normalized/generate_organ_file_count.py` from the full ReDU metadata table, which is too large to include (~790 MB) and can be downloaded from ReDU.
 
-## Setup
-
-Requires Python 3.10. The figures use the Arial font; without it, matplotlib uses its default font.
-
-```bash
-pip install -r requirements.txt
-gunzip -k fig/large_heatmap/data/all_alkamines_new.csv.gz fig/overall_dist/ALL_MASST_category.csv.gz
-```
-
-## Usage
-
-Run the scripts from the repository root, for example `python dose_response/dose_curve_plot.py`. Each takes under 15 seconds.
-
-In `fig/large_heatmap/`, run each `*_amine.py` script before the matching `*_ketone_aldehyde.py` script and before the `normalized/` scripts. To regenerate all figures in order:
-
-```bash
-python fig/large_heatmap/overall_MASST_heatmap.py
-python fig/large_heatmap/human_bodysite_scatterplot_amine.py
-python fig/large_heatmap/human_bodysite_scatterplot_ketone_aldehyde.py
-python fig/large_heatmap/rodent_bodysite_scatterplot_amine.py
-python fig/large_heatmap/rodent_bodysite_scatterplot_ketone_aldehyde.py
-python fig/large_heatmap/normalized/human_bodysite_scatterplot_amine.py
-python fig/large_heatmap/normalized/human_bodysite_scatterplot_ketone_aldehyde.py
-python fig/large_heatmap/normalized/rodent_bodysite_scatterplot_amine.py
-python fig/large_heatmap/normalized/rodent_bodysite_scatterplot_ketone_aldehyde.py
-python fig/large_heatmap/steroid_MASST_heatmap.py
-python fig/large_heatmap/bodysite_scatterplot_steroid.py
-python fig/overall_dist/overall_dist_upset.py
-python fig/structure_upset/structure_overlap_upset.py
-python culture_data/heatmap_culture.py
-python dose_response/dose_curve_plot.py
-python immune_data/barplot.py
-python T_cell/T_cell_barplots.py
-```
-
 ## License
 
 [Apache License 2.0](LICENSE)
